@@ -147,3 +147,4 @@ const book = getBook(2);
 const arr = ["Arthur", "Dutch"];
 
 const { title, author } = book;
+
