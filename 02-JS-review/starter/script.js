@@ -144,6 +144,6 @@ function getBook(id) {
 }
 
 const book = getBook(2);
-const arr = ["Arthur", "Dutch"]
+const arr = ["Arthur", "Dutch"];
 
 const { title, author } = book;
