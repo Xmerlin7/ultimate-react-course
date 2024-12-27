@@ -155,7 +155,7 @@ const Styledscript = styled.div``;
 function script() {
   return (
     <Styledscript>
-      
+       
     </Styledscript>
   );
 }
