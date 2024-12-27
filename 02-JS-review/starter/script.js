@@ -148,3 +148,16 @@ const arr = ["Arthur", "Dutch"];
 
 const { title, author } = book;
 
+import styled from 'styled-components';
+
+const Styledscript = styled.div``;
+
+function script() {
+  return (
+    <Styledscript>
+      
+    </Styledscript>
+  );
+}
+
+export default script;
