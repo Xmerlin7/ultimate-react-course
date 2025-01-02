@@ -159,4 +159,5 @@ function script() {
     </Styledscript>
   );
 }
+
 export default script;
