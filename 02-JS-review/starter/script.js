@@ -143,20 +143,4 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-const book = getBook(2);
-const arr = ["Arthur", "Dutch"];
 
-const { title, author } = book;
-
-import styled from 'styled-components';
-
-const Styledscript = styled.div``;
-
-function script() {
-  return (
-    <Styledscript>
-       
-    </Styledscript>
-  );
-}
-export default script;
