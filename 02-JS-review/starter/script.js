@@ -144,3 +144,4 @@ function getBook(id) {
 }
 const books = getBooks();
 
+books;
