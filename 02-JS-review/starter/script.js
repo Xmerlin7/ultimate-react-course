@@ -145,7 +145,7 @@ function getBook(id) {
 // const books = getBooks();
 
 // const [title, author] = books;
-const book = getBook(1)
-const {reviews:{goodreads, librarything} , author} = book
-// console.log(goodreads)
-console.log(goodreads.rating)
+// const book = getBook(1)
+// const {reviews:{goodreads, librarything} , author} = book
+
+// console.log(gooreads.rating)
