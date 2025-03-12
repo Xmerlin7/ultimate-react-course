@@ -142,6 +142,10 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
-const books = getBooks();
+// const books = getBooks();
 
-books;
+// const [title, author] = books;
+const book = getBook(1)
+const {reviews:{goodreads, librarything} , author} = book
+// console.log(goodreads)
+console.log(goodreads.rating)
