@@ -148,3 +148,4 @@ const book = getBook(1)
 const {reviews:{goodreads:{rating,  ratingsCount }, librarything} , author} = book
 
 console.log(rating)
+book;
