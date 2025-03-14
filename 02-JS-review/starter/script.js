@@ -142,10 +142,9 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
-// const books = getBooks();
+const books = getBooks();
 
-// const [title, author] = books;
-// const book = getBook(1)
-// const {reviews:{goodreads, librarything} , author} = book
+const book = getBook(1)
+const {reviews:{goodreads:{rating,  ratingsCount }, librarything} , author} = book
 
-// console.log(gooreads.rating)
+console.log(rating)
