@@ -144,8 +144,14 @@ function getBook(id) {
 }
 const books = getBooks();
 
-const book = getBook(1)
-const {reviews:{goodreads:{rating,  ratingsCount }, librarything} , author} = book
+const book = getBook(1);
+const {
+  reviews: {
+    goodreads: { rating, ratingsCount },
+    librarything,
+  },
+  author,
+} = book;
 
-console.log(rating)
+console.log(rating);
 book;
