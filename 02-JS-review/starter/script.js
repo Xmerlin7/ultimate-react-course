@@ -152,8 +152,15 @@ const {
   },
   author,
 } = book;
-
-fetch("https://jsonplaceholder.typicode.com/todos")
-  .then((response) => response.json())
-  .then((json) => console.log(json))
-  .catch((error) => console.error("Error:", error));
+book;
+// fetch("https://jsonplaceholder.typicode.com/todos")
+//   .then((response) => response.json())
+//   .then((json) => console.log(json))
+//   .catch((error) => console.error("Error:", error));
+async function getData() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  const data = await res.json()
+  console.log(data)
+  
+}
+getData()
