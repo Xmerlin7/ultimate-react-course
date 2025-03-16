@@ -154,5 +154,5 @@ const data = [
   } = book;
   
   console.log(rating);
-  book;
+  book; 
   
