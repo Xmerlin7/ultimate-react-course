@@ -152,7 +152,7 @@ const data = [
     },
     author,
   } = book;
-  
-  console.log(rating);
+  const bookPages = books.reduce((acc, book) => acc + book.pages, 1)
+  console.log(bookPages);
   book; 
   
