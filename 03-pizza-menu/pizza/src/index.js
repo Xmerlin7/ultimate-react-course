@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import pizzaData from "./data";
-console.log(pizzaData);
+
 const App = () => {
   return (
     <div>
