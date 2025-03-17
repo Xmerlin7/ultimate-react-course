@@ -20,7 +20,20 @@ body {
   padding: 3.2rem;
   padding-bottom: 6rem;
 }
-
+.CardHolder{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  justify-content: center;
+  align-items: center;
+}
+.skillscont{
+  display: flex;
+  gap: 10 px;
+}
+.skill1{
+  background-color: green;
+}
 .container {
   max-width: 80rem;
   margin: 0 auto;
