@@ -22,7 +22,7 @@ function Form() {
 function PackingList() {
   return (
     <div className="list">
-      <ul >list</ul>
+      <li >list</li>
     </div>
   );
 }
