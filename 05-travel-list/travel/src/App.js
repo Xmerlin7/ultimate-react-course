@@ -1,4 +1,4 @@
-import "./index.css"
+import "./index.css";
 function App() {
   return (
     <div className="app">
@@ -20,7 +20,11 @@ function Form() {
   );
 }
 function PackingList() {
-  return <div className="list">list</div>;
+  return (
+    <div className="list">
+      <ul >list</ul>
+    </div>
+  );
 }
 function Stats() {
   return (
