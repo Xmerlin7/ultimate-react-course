@@ -1,4 +1,10 @@
 import "./index.css";
+const initialItems = [
+  { id: 1, description: "Passports", quantity: 2, packed: false },
+  { id: 2, description: "Socks", quantity: 12, packed: true },
+  { id: 3, description: "Games", quantity: 12, packed: false },
+  { id: 4, description: "Laptop", quantity: 12, packed: true },
+];
 function App() {
   return (
     <div className="app">
@@ -9,12 +15,6 @@ function App() {
     </div>
   );
 }
-const initialItems = [
-  { id: 1, description: "Passports", quantity: 2, packed: false },
-  { id: 2, description: "Socks", quantity: 12, packed: false },
-  { id: 3, description: "Games", quantity: 12, packed: false },
-  { id: 4, description: "Laptop", quantity: 12, packed: false },
-];
 function Logo() {
   return <h1>🌴 Far Away 🛫</h1>;
 }
@@ -28,14 +28,23 @@ function Form() {
 function PackingList() {
   return (
     <div className="list">
-      <li >{initialItems.map((item)=> <Item item={item.description}/>) }</li>
+      <li>
+        {initialItems.map((item) => (
+          <Item item={item} />
+        ))}
+      </li>
     </div>
   );
 }
-function Item({item}){
-  return(
-    <h3>{item}</h3>
-  )
+function Item({ item }) {
+  return (
+    <li>
+      <h3 style={{ textDecoration: item.packed ? "line-through" : "none" }}>
+        {item.quantity} {item.description}
+      </h3>
+      <button></button>
+    </li>
+  );
 }
 function Stats() {
   return (
