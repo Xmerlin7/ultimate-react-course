@@ -39,10 +39,10 @@ function PackingList() {
 function Item({ item }) {
   return (
     <li>
-      <h3 style={{ textDecoration: item.packed ? "line-through" : "none" }}>
+      <span style={{ textDecoration: item.packed ? "line-through" : "none" }}>
         {item.quantity} {item.description}
-      </h3>
-      <button></button>
+      </span>
+      <button>x</button>
     </li>
   );
 }
