@@ -20,11 +20,11 @@ function Form() {
   );
 }
 function PackingList() {
-  return <div className="list"></div>;
+  return <div className="list">list</div>;
 }
 function Stats() {
   return (
-    <footer>
+    <footer className="stats">
       you have X numbers on your list, and you already pcked X (%x)
     </footer>
   );
