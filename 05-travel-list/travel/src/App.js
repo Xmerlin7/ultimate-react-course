@@ -22,7 +22,7 @@ function Form() {
   return (
     <div className="add-form">
       <h3>what do you need for your trip?</h3>
-      <
+      
     </div>
   );
 }
@@ -50,7 +50,7 @@ function Item({ item }) {
 function Stats() {
   return (
     <footer className="stats">
-      you have X numbers on your list, and you already pcked X (%x)
+      you have X numbers on your list, and you already packed X (%x)
     </footer>
   );
 }
