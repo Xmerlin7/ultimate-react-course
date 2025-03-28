@@ -21,18 +21,24 @@ function Logo() {
 }
 function Form() {
   const [quantity, setQuantity] = useState(1);
+  const [des, setDes] = useState("");
   function handleChange(e) {
-    setQuantity(e.target.value);
+    e.preventDefault();
   }
   return (
-    <form className="add-form">
+    <form className="add-form" onSubmit={handleChange}>
       <h3>what do you need for your trip?</h3>
-      <select value={quantity} onChange={handleChange}>
+      <select value={quantity} onChange={(e) => setQuantity(e.target.value)}>
         {Array.from({ length: 20 }, (_, i) => (
-          <option value={i + 1}>{i + 1}</option>
+          <option>{i + 1}</option>
         ))}
       </select>
-      <input type="text" placeholder="Item..."></input>
+      <input
+        type="text"
+        placeholder="Item..."
+        value={des}
+        onChange={(e) => setDes(e.target.value)}
+      ></input>
       <button>Add</button>
     </form>
   );
