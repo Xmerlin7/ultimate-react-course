@@ -20,21 +20,21 @@ function Logo() {
   return <h1>🌴 Far Away 🛄</h1>;
 }
 function Form() {
-  const [quantity, setQuantity] = useState(1)
-  function handleChange(e){
-    setQuantity(e.target.value)
+  const [quantity, setQuantity] = useState(1);
+  function handleChange(e) {
+    setQuantity(e.target.value);
   }
   return (
-    <div className="add-form">
+    <form className="add-form">
       <h3>what do you need for your trip?</h3>
       <select value={quantity} onChange={handleChange}>
-      {Array.from({length: initialItems.length}, (_, i) => (
-        <option value={i + 1}>{i + 1}</option>
-      ))}
+        {Array.from({ length: 20 }, (_, i) => (
+          <option value={i + 1}>{i + 1}</option>
+        ))}
       </select>
-      <input type="text" placeholder="Item..." ></input>
+      <input type="text" placeholder="Item..."></input>
       <button>Add</button>
-    </div>
+    </form>
   );
 }
 function PackingList() {
@@ -42,7 +42,7 @@ function PackingList() {
     <div className="list">
       <li>
         {initialItems.map((item) => (
-          <Item item={item} />
+          <Item item={item} key={item.id} />
         ))}
       </li>
     </div>
