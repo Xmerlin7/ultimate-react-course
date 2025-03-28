@@ -27,8 +27,8 @@ function Form() {
     const newItem = { description, quantity, packed: false, id: Date.now() };
     if (!description) return;
     const total = [newItem, ...initialItems];
-    setDescription("")
-    setQuantity(1)
+    setDescription("");
+    setQuantity(1);
     console.log(total);
   }
   return (
@@ -62,13 +62,14 @@ function PackingList() {
     </div>
   );
 }
+
 function Item({ item }) {
   return (
     <li>
       <span style={{ textDecoration: item.packed ? "line-through" : "none" }}>
         {item.quantity} {item.description}
       </span>
-      <button>x</button>
+      x
     </li>
   );
 }
