@@ -21,9 +21,13 @@ function Logo() {
 }
 function Form() {
   const [quantity, setQuantity] = useState(1);
-  const [des, setDes] = useState("");
+  const [description, setDescription] = useState("");
   function handleChange(e) {
     e.preventDefault();
+    const newItem = { description, quantity, packed: false, id: Date.now() };
+    if (newItem.description === '') return;
+    const total = [newItem, ...initialItems];
+    console.log(total);
   }
   return (
     <form className="add-form" onSubmit={handleChange}>
@@ -38,8 +42,8 @@ function Form() {
       <input
         type="text"
         placeholder="Item..."
-        value={des}
-        onChange={(e) => setDes(e.target.value)}
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
       ></input>
       <button>Add</button>
     </form>
