@@ -28,7 +28,7 @@ function Form() {
     <div className="add-form">
       <h3>what do you need for your trip?</h3>
       <select value={quantity} onChange={handleChange}>
-      {Array.from({length: 20}, (_, i) => (
+      {Array.from({length: initialItems.length}, (_, i) => (
         <option value={i + 1}>{i + 1}</option>
       ))}
       </select>
