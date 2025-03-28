@@ -25,8 +25,10 @@ function Form() {
   function handleChange(e) {
     e.preventDefault();
     const newItem = { description, quantity, packed: false, id: Date.now() };
-    if (newItem.description === '') return;
+    if (!description) return;
     const total = [newItem, ...initialItems];
+    setDescription("")
+    setQuantity(1)
     console.log(total);
   }
   return (
@@ -52,11 +54,11 @@ function Form() {
 function PackingList() {
   return (
     <div className="list">
-      <li>
+      <ul>
         {initialItems.map((item) => (
           <Item item={item} key={item.id} />
         ))}
-      </li>
+      </ul>
     </div>
   );
 }
