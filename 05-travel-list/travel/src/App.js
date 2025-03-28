@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./index.css";
 const initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
@@ -16,13 +17,21 @@ function App() {
   );
 }
 function Logo() {
-  return <h1>🌴 Far Away 🛫</h1>;
+  return <h1>🌴 Far Away 🛄</h1>;
 }
 function Form() {
+  const [quantity, setQuantity] = useState(1)
+  function handleChange(e){
+    setQuantity(e.target.value)
+  }
   return (
     <div className="add-form">
       <h3>what do you need for your trip?</h3>
-      
+      <select value={quantity} onChange={handleChange}>
+      {Array.from({length: 20}, (_, i) => i+1)}
+      </select>
+      <input></input>
+      <button>Add</button>
     </div>
   );
 }
