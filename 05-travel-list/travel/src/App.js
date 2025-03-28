@@ -28,9 +28,11 @@ function Form() {
   return (
     <form className="add-form" onSubmit={handleChange}>
       <h3>what do you need for your trip?</h3>
-      <select value={quantity} onChange={(e) => setQuantity(e.target.value)}>
+      <select value={quantity} onChange={(e) => setQuantity(+e.target.value)}>
         {Array.from({ length: 20 }, (_, i) => (
-          <option value={i + 1} key={i + 1}>{i + 1}</option>
+          <option value={i + 1} key={i + 1}>
+            {i + 1}
+          </option>
         ))}
       </select>
       <input
