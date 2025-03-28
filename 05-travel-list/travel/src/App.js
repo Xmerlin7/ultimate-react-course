@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./index.css";
-const initialItems = [
+let initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
   { id: 2, description: "Socks", quantity: 12, packed: true },
   { id: 3, description: "Games", quantity: 12, packed: false },
@@ -26,10 +26,9 @@ function Form() {
     e.preventDefault();
     const newItem = { description, quantity, packed: false, id: Date.now() };
     if (!description) return;
-    const total = [newItem, ...initialItems];
+    initialItems = [newItem, ...initialItems];
     setDescription("");
     setQuantity(1);
-    console.log(total);
   }
   return (
     <form className="add-form" onSubmit={handleChange}>
