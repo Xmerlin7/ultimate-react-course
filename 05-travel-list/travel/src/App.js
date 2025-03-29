@@ -3,7 +3,6 @@ import "./index.css";
 
 function App() {
   const [items, setItems] = useState([]);
-
   function handleAdd(newItem) {
     // Renamed parameter to 'newItem'
     setItems((currentItems) => [...currentItems, newItem]); // Use the current state
@@ -13,11 +12,18 @@ function App() {
     setItems(updatedItems); // Update the state with the filtered array
   }
 
+  function isPacked(id) {
+    setItems((currentItems) =>
+      currentItems.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  }
   return (
     <div className="app">
       <Logo />
       <Form onAddable={handleAdd}  />
-      <PackingList item={items} handleDelete={handleDelete} />
+      <PackingList item={items} handleDelete={handleDelete} isPacked={isPacked} />
       <Stats />
     </div>
   );
@@ -58,21 +64,22 @@ function Form({ onAddable }) {
     </form>
   );
 }
-function PackingList({ item, handleDelete }) {
+function PackingList({ item, handleDelete, isPacked}) {
   return (
     <div className="list">
       <ul>
         {item.map((item) => (
-          <Item item={item} handleDelete={handleDelete} key={item.id} />
+          <Item item={item} handleDelete={handleDelete} key={item.id} isPacked={isPacked} />
         ))}
       </ul>
     </div>
   );
 }
 
-function Item({ item, handleDelete }) {
+function Item({ item, handleDelete, isPacked} ) {
   return (
     <li>
+      <input type="checkbox" onClick={() => isPacked(item.id)} />
       <span style={{ textDecoration: item.packed ? "line-through" : "none" }}>
         {item.quantity} {item.description}
       </span>
