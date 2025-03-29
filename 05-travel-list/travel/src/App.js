@@ -1,17 +1,19 @@
 import { useState } from "react";
 import "./index.css";
-let initialItems = [
-  { id: 1, description: "Passports", quantity: 2, packed: false },
-  { id: 2, description: "Socks", quantity: 12, packed: true },
-  { id: 3, description: "Games", quantity: 12, packed: false },
-  { id: 4, description: "Laptop", quantity: 12, packed: true },
-];
+
 function App() {
+  const [items, setItems] = useState([]);
+
+  function handleAdd(newItem) {
+    // Renamed parameter to 'newItem'
+    setItems((currentItems) => [...currentItems, newItem]); // Use the current state
+  }
+
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList />
+      <Form onAddhandle={handleAdd} />
+      <PackingList item={items} />
       <Stats />
     </div>
   );
@@ -19,14 +21,16 @@ function App() {
 function Logo() {
   return <h1>🌴 Far Away 🛄</h1>;
 }
-function Form() {
+
+function Form({ onAddhandle }) {
   const [quantity, setQuantity] = useState(1);
   const [description, setDescription] = useState("");
+
   function handleChange(e) {
-    e.preventDefault();                                                    
+    e.preventDefault();
     const newItem = { description, quantity, packed: false, id: Date.now() };
     if (!description) return;
-    initialItems = [newItem, ...initialItems];
+    onAddhandle(newItem);
     setDescription("");
     setQuantity(1);
   }
@@ -50,11 +54,11 @@ function Form() {
     </form>
   );
 }
-function PackingList() {
+function PackingList({ item }) {
   return (
     <div className="list">
       <ul>
-        {initialItems.map((item) => (
+        {item.map((item) => (
           <Item item={item} key={item.id} />
         ))}
       </ul>
