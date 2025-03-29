@@ -23,7 +23,7 @@ function Form() {
   const [quantity, setQuantity] = useState(1);
   const [description, setDescription] = useState("");
   function handleChange(e) {
-    e.preventDefault();
+    e.preventDefault();                                                    
     const newItem = { description, quantity, packed: false, id: Date.now() };
     if (!description) return;
     initialItems = [newItem, ...initialItems];
