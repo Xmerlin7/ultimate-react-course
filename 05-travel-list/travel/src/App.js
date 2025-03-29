@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "./index.css";
 
 function App() {
@@ -19,6 +19,9 @@ function App() {
       )
     );
   }
+  function handleReset() {
+    setItems([]);
+  }
   return (
     <div className="app">
       <Logo />
@@ -27,6 +30,7 @@ function App() {
         item={items}
         handleDelete={handleDelete}
         isPacked={isPacked}
+        onhandelReset={handleReset}
       />
       <Stats items={items} />
     </div>
@@ -68,11 +72,26 @@ function Form({ onAddable }) {
     </form>
   );
 }
-function PackingList({ item, handleDelete, isPacked }) {
+function PackingList({ item, handleDelete, isPacked, onhandelReset }) {
+  const [sort, setSort] = useState("Description");
+  const sortedItems = useMemo(() => {
+    if (sort === "Description") {
+      return item
+        .slice() // Create a shallow copy to avoid mutating the original array
+        .sort((a, b) =>
+          a.description.toLowerCase().localeCompare(b.description.toLowerCase())
+        );
+    } else if (sort === "packed") {
+      return item.slice().sort((a, b) => a.packed - b.packed);
+    } else if (sort === "input") {
+      return [...item]; // Return the original order
+    }
+  }, [item, sort]); // Recompute only when `item` or `sort` changes
+
   return (
     <div className="list">
       <ul>
-        {item.map((item) => (
+        {sortedItems.map((item) => (
           <Item
             item={item}
             handleDelete={handleDelete}
@@ -82,12 +101,12 @@ function PackingList({ item, handleDelete, isPacked }) {
         ))}
       </ul>
       <div className="action">
-        <select>
+        <select value={sort} onChange={(e) => setSort(e.target.value)}>
           <option value={"Description"}>Sort by Description</option>
           <option value={"packed"}>Sort by packed</option>
           <option value={"input"}>Sort by input</option>
         </select>
-        <button>Reset</button>
+        <button onClick={onhandelReset}>Reset</button>
       </div>
     </div>
   );
