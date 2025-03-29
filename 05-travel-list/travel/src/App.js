@@ -81,6 +81,7 @@ function PackingList({ item, handleDelete, isPacked }) {
           />
         ))}
       </ul>
+      <div className="action">asd</div>
     </div>
   );
 }
