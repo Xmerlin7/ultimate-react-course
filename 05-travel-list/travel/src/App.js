@@ -22,8 +22,12 @@ function App() {
   return (
     <div className="app">
       <Logo />
-      <Form onAddable={handleAdd}  />
-      <PackingList item={items} handleDelete={handleDelete} isPacked={isPacked} />
+      <Form onAddable={handleAdd} />
+      <PackingList
+        item={items}
+        handleDelete={handleDelete}
+        isPacked={isPacked}
+      />
       <Stats />
     </div>
   );
@@ -64,26 +68,33 @@ function Form({ onAddable }) {
     </form>
   );
 }
-function PackingList({ item, handleDelete, isPacked}) {
+function PackingList({ item, handleDelete, isPacked }) {
   return (
     <div className="list">
       <ul>
         {item.map((item) => (
-          <Item item={item} handleDelete={handleDelete} key={item.id} isPacked={isPacked} />
+          <Item
+            item={item}
+            handleDelete={handleDelete}
+            key={item.id}
+            isPacked={isPacked}
+          />
         ))}
       </ul>
     </div>
   );
 }
 
-function Item({ item, handleDelete, isPacked} ) {
+function Item({ item, handleDelete, isPacked }) {
   return (
     <li>
       <input type="checkbox" onClick={() => isPacked(item.id)} />
       <span style={{ textDecoration: item.packed ? "line-through" : "none" }}>
         {item.quantity} {item.description}
       </span>
-      <button className="x" onClick={() => handleDelete(item.id)}>x</button>
+      <button className="x" onClick={() => handleDelete(item.id)}>
+        x
+      </button>
     </li>
   );
 }
