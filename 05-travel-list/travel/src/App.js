@@ -81,7 +81,14 @@ function PackingList({ item, handleDelete, isPacked }) {
           />
         ))}
       </ul>
-      <div className="action">asd</div>
+      <div className="action">
+        <select>
+          <option value={"Description"}>Sort by Description</option>
+          <option value={"packed"}>Sort by packed</option>
+          <option value={"input"}>Sort by input</option>
+        </select>
+        <button>Reset</button>
+      </div>
     </div>
   );
 }
