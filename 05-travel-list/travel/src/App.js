@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="app">
       <Logo />
-      <Form onAddhandle={handleAdd} />
+      <Form onAddable={handleAdd} />
       <PackingList item={items} />
       <Stats />
     </div>
@@ -22,7 +22,7 @@ function Logo() {
   return <h1>🌴 Far Away 🛄</h1>;
 }
 
-function Form({ onAddhandle }) {
+function Form({ onAddable }) {
   const [quantity, setQuantity] = useState(1);
   const [description, setDescription] = useState("");
 
@@ -30,7 +30,7 @@ function Form({ onAddhandle }) {
     e.preventDefault();
     const newItem = { description, quantity, packed: false, id: Date.now() };
     if (!description) return;
-    onAddhandle(newItem);
+    onAddable(newItem);
     setDescription("");
     setQuantity(1);
   }
@@ -72,7 +72,7 @@ function Item({ item }) {
       <span style={{ textDecoration: item.packed ? "line-through" : "none" }}>
         {item.quantity} {item.description}
       </span>
-      x
+      <button className="x" onClick={() => alert(`You clicked on ${item.description}`)}>x</button>
     </li>
   );
 }
