@@ -8,12 +8,16 @@ function App() {
     // Renamed parameter to 'newItem'
     setItems((currentItems) => [...currentItems, newItem]); // Use the current state
   }
+  function handleDelete(id) {
+    const updatedItems = items.filter((item) => item.id !== id); // Filter out the item with the given id
+    setItems(updatedItems); // Update the state with the filtered array
+  }
 
   return (
     <div className="app">
       <Logo />
-      <Form onAddable={handleAdd} />
-      <PackingList item={items} />
+      <Form onAddable={handleAdd}  />
+      <PackingList item={items} handleDelete={handleDelete} />
       <Stats />
     </div>
   );
@@ -54,25 +58,25 @@ function Form({ onAddable }) {
     </form>
   );
 }
-function PackingList({ item }) {
+function PackingList({ item, handleDelete }) {
   return (
     <div className="list">
       <ul>
         {item.map((item) => (
-          <Item item={item} key={item.id} />
+          <Item item={item} handleDelete={handleDelete} key={item.id} />
         ))}
       </ul>
     </div>
   );
 }
 
-function Item({ item }) {
+function Item({ item, handleDelete }) {
   return (
     <li>
       <span style={{ textDecoration: item.packed ? "line-through" : "none" }}>
         {item.quantity} {item.description}
       </span>
-      <button className="x" onClick={() => alert(`You clicked on ${item.description}`)}>x</button>
+      <button className="x" onClick={() => handleDelete(item.id)}>x</button>
     </li>
   );
 }
