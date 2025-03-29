@@ -28,12 +28,12 @@ function App() {
         handleDelete={handleDelete}
         isPacked={isPacked}
       />
-      <Stats />
+      <Stats items={items} />
     </div>
   );
 }
 function Logo() {
-  return <h1>🌴 Far Away 🛄</h1>;
+  return <h1>🏝️ Far Away 🧳</h1>;
 }
 
 function Form({ onAddable }) {
@@ -98,11 +98,27 @@ function Item({ item, handleDelete, isPacked }) {
     </li>
   );
 }
-function Stats() {
+function Stats({ items }) {
+  if (!items.length)
+    return (
+      <p className="stats">
+        <em>Start adding some items to your packing list 🚀</em>
+      </p>
+    );
+
+  const numItems = items.length;
+  const numPacked = items.filter((item) => item.packed).length;
+  const percentage = Math.round((numPacked / numItems) * 100);
+
   return (
     <footer className="stats">
-      you have X numbers on your list, and you already packed X (%x)
+      <em>
+        {percentage === 100
+          ? "You got everything! Ready to go ✈️"
+          : ` 💼 You have ${numItems} items on your list, and you already packed ${numPacked} (${percentage}%)`}
+      </em>
     </footer>
   );
 }
+
 export default App;
