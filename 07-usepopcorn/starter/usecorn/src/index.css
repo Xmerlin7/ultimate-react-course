@@ -21,7 +21,7 @@
 }
 
 html {
-  /* Setting font-size to 62.5% makes 1rem equal to 10px for easier calculations */
+  /*font-size: 62.5%;  10px  Setting font-size to 62.5% makes 1rem equal to 10px for easier calculations */
   font-size: calc(10px + 0.4vw); /* Scales with viewport width */
 }
 
