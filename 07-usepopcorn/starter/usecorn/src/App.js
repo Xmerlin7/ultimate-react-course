@@ -60,9 +60,9 @@ export default function App() {
         <Result movies={movies} />
       </NavBar>
       <Main>
-      <ListBox>
-        <MovieList movies={movies} />
-      </ListBox>
+        <ListBox>
+          <MovieList movies={movies} />
+        </ListBox>
       </Main>
     </>
   );
