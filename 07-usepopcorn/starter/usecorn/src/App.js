@@ -103,7 +103,6 @@ function NavBar() {
   );
 }
 function ListBox() {
-  
   const [isOpen1, setIsOpen1] = useState(true);
   return (
     <div className="box">
@@ -127,17 +126,19 @@ function MovieList() {
     </ul>
   );
 }
-function Movie({movie}){
-  return(<li key={movie.imdbID}>
-    <img src={movie.Poster} alt={`${movie.Title} poster`} />
-    <h3>{movie.Title}</h3>
-    <div>
-      <p>
-        <span>🗓</span>
-        <span>{movie.Year}</span>
-      </p>
-    </div>
-  </li>)
+function Movie({ movie }) {
+  return (
+    <li key={movie.imdbID}>
+      <img src={movie.Poster} alt={`${movie.Title} poster`} />
+      <h3>{movie.Title}</h3>
+      <div>
+        <p>
+          <span>🗓</span>
+          <span>{movie.Year}</span>
+        </p>
+      </div>
+    </li>
+  );
 }
 function WatchedBox() {
   const [watched, setWatched] = useState(tempWatchedData);
