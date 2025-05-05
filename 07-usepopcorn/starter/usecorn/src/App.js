@@ -63,7 +63,7 @@ function Main() {
   return (
     <main className="main">
       <ListBox />
-      <WatchedBox watched={watched}/>
+      <WatchedBox watched={watched} />
     </main>
   );
 }
@@ -141,10 +141,8 @@ function Movie({ movie }) {
     </li>
   );
 }
-function WatchedBox({watched}) {
-  
+function WatchedBox({ watched }) {
   const [isOpen2, setIsOpen2] = useState(true);
-
 
   return (
     <div className="box">
@@ -156,28 +154,11 @@ function WatchedBox({watched}) {
       </button>
       {isOpen2 && (
         <>
-          <Summary watched={watched}/>
+          <Summary watched={watched} />
 
           <ul className="list">
             {watched.map((movie) => (
-              <li key={movie.imdbID}>
-                <img src={movie.Poster} alt={`${movie.Title} poster`} />
-                <h3>{movie.Title}</h3>
-                <div>
-                  <p>
-                    <span>⭐️</span>
-                    <span>{movie.imdbRating}</span>
-                  </p>
-                  <p>
-                    <span>🌟</span>
-                    <span>{movie.userRating}</span>
-                  </p>
-                  <p>
-                    <span>⏳</span>
-                    <span>{movie.runtime} min</span>
-                  </p>
-                </div>
-              </li>
+              <WatchedDetails movie={movie} />
             ))}
           </ul>
         </>
@@ -185,8 +166,29 @@ function WatchedBox({watched}) {
     </div>
   );
 }
-function Summary({watched}) {
-  
+function WatchedDetails({ movie }) {
+  return (
+    <li key={movie.imdbID}>
+      <img src={movie.Poster} alt={`${movie.Title} poster`} />
+      <h3>{movie.Title}</h3>
+      <div>
+        <p>
+          <span>⭐️</span>
+          <span>{movie.imdbRating}</span>
+        </p>
+        <p>
+          <span>🌟</span>
+          <span>{movie.userRating}</span>
+        </p>
+        <p>
+          <span>⏳</span>
+          <span>{movie.runtime} min</span>
+        </p>
+      </div>
+    </li>
+  );
+}
+function Summary({ watched }) {
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
   const avgRuntime = average(watched.map((movie) => movie.runtime));
