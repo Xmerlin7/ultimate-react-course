@@ -59,7 +59,11 @@ export default function App() {
         <Search />
         <Result movies={movies} />
       </NavBar>
-      <Main movies={movies} />
+      <Main>
+      <ListBox>
+        <MovieList movies={movies} />
+      </ListBox>
+      </Main>
     </>
   );
 }
@@ -98,17 +102,20 @@ function Result({ movies }) {
   );
 }
 
-function Main({ movies }) {
+function Main({ children }) {
   const [watched, setWatched] = useState(tempWatchedData);
   return (
     <main className="main">
-      <ListBox movies={movies} />
-      <WatchedBox watched={watched} />
+      {children}
+      <WatchedBox>
+        <Summary watched={watched} />
+        <WatchedMovieList watched={watched} />
+      </WatchedBox>
     </main>
   );
 }
 
-function ListBox({ movies }) {
+function ListBox({ children }) {
   const [isOpen1, setIsOpen1] = useState(true);
   return (
     <div className="box">
@@ -118,7 +125,7 @@ function ListBox({ movies }) {
       >
         {isOpen1 ? "–" : "+"}
       </button>
-      {isOpen1 && <MovieList movies={movies} />}
+      {isOpen1 && children}
     </div>
   );
 }
@@ -148,7 +155,7 @@ function Movie({ movie }) {
   );
 }
 
-function WatchedBox({ watched }) {
+function WatchedBox({ children }) {
   const [isOpen2, setIsOpen2] = useState(true);
   return (
     <div className="box">
@@ -158,12 +165,7 @@ function WatchedBox({ watched }) {
       >
         {isOpen2 ? "–" : "+"}
       </button>
-      {isOpen2 && (
-        <>
-          <Summary watched={watched} />
-          <WatchedMovieList watched={watched} />
-        </>
-      )}
+      {isOpen2 && <>{children}</>}
     </div>
   );
 }
