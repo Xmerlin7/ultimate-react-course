@@ -62,6 +62,10 @@ export default function App() {
         <Result movies={movies} />
       </NavBar>
       <Main>
+        {/*
+        passing childern as props 
+        <Box element={<MovieList movies={movies} />} />
+        */}
         <Box>
           <MovieList movies={movies} />
         </Box>
