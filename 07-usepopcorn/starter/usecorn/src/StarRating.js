@@ -7,6 +7,7 @@ const RatingStyle = {
 };
 const StarRating = ({ maxRating = 5 }) => {
   const [rating, setRating] = useState(0);
+  const [hoveredRating, setHoveredRating] = useState(0);
   const clickHandler = (newRating) => {
     setRating(newRating);
   };
@@ -19,20 +20,29 @@ const StarRating = ({ maxRating = 5 }) => {
               onRating={() => {
                 clickHandler(index + 1);
               }}
-              full={rating >= index + 1}
+              
+              onHover={() => {
+                setHoveredRating(index + 1);
+              }}
+              onLeave={() => {
+                setHoveredRating(0);
+              }}
+              full={hoveredRating ? hoveredRating >= index + 1 : rating >= index + 1}
             />
           </span>
         ))}
       </div>
-      <p>Rate this movie {rating || ""}!</p>
+      <p>Rate this movie {hoveredRating ? hoveredRating : rating || ""}!</p>
     </div>
   );
 };
 
-function Star({ onRating, full }) {
+function Star({ onRating, full, onHover, onLeave }) {
   return full ? (
     <svg
       onClick={onRating}
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
       style={{ width: "24px", height: "24px" }}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -44,6 +54,8 @@ function Star({ onRating, full }) {
   ) : (
     <svg
       onClick={onRating}
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
       role="button"
       style={{ width: "24px", height: "24px" }}
       xmlns="http://www.w3.org/2000/svg"
