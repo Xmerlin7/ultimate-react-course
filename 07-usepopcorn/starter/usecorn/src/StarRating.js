@@ -15,15 +15,18 @@ const StarRating = ({ maxRating = 5 }) => {
   };
   return (
     <div style={style}>
-      {Array.from({ length: maxRating }, (_, i) => (
-        <Star
-          key={i}
-          onClickHandler={() => clickHandler(i)}
-          fill={hoverRating ? hoverRating >= i + 1 : rating >= i + 1}
-          onHoverIn={() => hoverHandlerIn(i)}
-          onHoverout={() => hoverHandlerOut(i)}
-        />
-      ))}
+      <div style={{ display: "flex" }}>
+        {Array.from({ length: maxRating }, (_, i) => (
+          <Star
+            key={i}
+            onClickHandler={() => clickHandler(i)}
+            fill={hoverRating ? hoverRating >= i + 1 : rating >= i + 1}
+            onHoverIn={() => hoverHandlerIn(i)}
+            onHoverout={() => hoverHandlerOut(i)}
+          />
+        ))}
+      </div>
+
       <p style={{ margin: 0, fontSize: "20px" }}>
         {" "}
         u set a rating of {hoverRating ? hoverRating : rating || ""}
