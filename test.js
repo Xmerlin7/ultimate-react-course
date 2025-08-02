@@ -1,44 +1,45 @@
-class queue {
+class Queue{
   constructor() {
-    this.items = [];
-    this.counter = 0;
+    this.items = {}
+    this.head = 0
+    this.tail = 0
+    
   }
-  enqueue(element) {
-    this.items[this.counter] = element;
-    this.counter++;
-    console.log(this.items.filter((x) => x != null).join("- >"));
-    return element;
+  enqueue(element){
+    this.items[this.tail] = element
+    this.tail++
+    
+    return element
+  }
+  dequeue(){
+    let deletedItem = this.items[this.head]
+    delete this.items[this.head]
+    this.head++
+    return deletedItem
+  }
+  size(){
+    return this.tail - this.head
   }
   isEmpty() {
-    return this.counter === 0;
+    return this.tail === this.head;
   }
-  dequeue() {
-    if (this.isEmpty()) {
-      console.log("Queue is empty");
-      return null;
+  peek(){
+    return (this.isEmpty ? null : this.items[this.head])
+  }
+  print(){
+    let result = []
+    for(let i = this.head; i <= this.tail; i++){
+      result.push(this.items[i]);
     }
-    let deletedItem = this.items.shift();
-    console.log(`this is the deleted item ${deletedItem}`);
-    this.counter--;
-    return deletedItem;
-  }
-  peek() {
-    console.log(`this is the queue first element ${this.items[0]}`);
-  }
-  size() {
-    console.log(`this is the queue size ${this.counter}`);
-  }
-  print() {
-    console.log(this.items.filter((x) => x != null).join("- >"));
+    console.log(result.join(" ->"));
   }
 }
-let queuee = new queue();
-queuee.enqueue(7);
-queuee.enqueue(6);
-queuee.enqueue(5);
-queuee.enqueue(5);
-queuee.enqueue(5);
-queuee.dequeue();
-queuee.print();
-queuee.size();
-queuee.peek();
+let q = new Queue();
+q.enqueue(5);
+q.enqueue(10);
+q.enqueue(15);
+q.print();      // 5 -> 10 -> 15
+q.dequeue();    // يحذف 5
+q.print();      // 10 -> 15
+console.log(q.size()); // 2
+console.log(q.peek()); // 10
