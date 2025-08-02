@@ -7,17 +7,15 @@ class queue {
     this.items[this.counter] = element;
     this.counter++;
     console.log(this.items.filter((x) => x != null).join("- >"));
-    return this.element;
+    return element;
   }
   isEmpty() {
-    if (this.counter == null) {
-      console.log("Queue is empty");
-      return true;
-    }
+    return this.counter === 0;
   }
   dequeue() {
-    if (this.isEmpty == true) {
-      return 0;
+    if (this.isEmpty()) {
+      console.log("Queue is empty");
+      return null;
     }
     let deletedItem = this.items.shift();
     console.log(`this is the deleted item ${deletedItem}`);
